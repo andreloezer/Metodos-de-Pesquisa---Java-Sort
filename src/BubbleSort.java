@@ -6,19 +6,14 @@ public class BubbleSort {
     }
 
     public void iterate() {
-        for (int i = 0; i < vetor.length; i++) {
-            int valor = 2147483647;
-            int index = 0;
-            for (int j = i; j < (vetor.length); j++) {
-                if (vetor[j] < valor) {
-                    valor = vetor[j];
-                    index = j;
-                    int save = vetor[i];
-                    vetor[i] = valor;
-                    vetor[index] = save;
+        for (int i = 0; i < vetor.length; i++) {  // Itera por cada item da array
+            for (int j = 0; j < (vetor.length - 1); j++) {  // Itera uma segunda vez pela array para garantir que todos os itens serão contemplados entre si
+                if (vetor[j] > vetor[j + 1]) {  // Verificação se o item atual é maior que o próximo, caso seja, os mesmos a posição invertida
+                    int save = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = save;
                 }
             }
-
         }
     };
 
@@ -29,7 +24,7 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        var sort = new BubbleSort(new int[] {38,14,29,34,666,88,1,999,0,-50});
+        var sort = new BubbleSort(new int[] {3,6,8,1,4,9,0});
         sort.iterate();
         sort.print();
     }
